@@ -6,6 +6,9 @@ void(entity targ, entity attacker) ClientObituary;
 
 void() monster_death_use;
 
+float intermission_running;
+
+
 //============================================================================
 
 /*
@@ -291,12 +294,14 @@ void(entity attacker, float damage) T_BeamDamage =
 
 void(entity org) bleeding =
 {
-	if (org.health >26)
+	if (intermission_running)
+		return;
+	if (org.health >= 26)
 		org.bleed = 0;
-	if (org.health == 0)
+	if (org.health <= 0)
 		return;
 	if (time < org.bleed_delay)
 		return;
 	SpawnBlood (org.origin, '0 0 0', 73);
-	org.bleed_delay = org.bleed_delay + 2.5;
+	org.bleed_delay = org.bleed_delay + 4.0;
 };
