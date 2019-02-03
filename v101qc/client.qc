@@ -946,7 +946,9 @@ void() PlayerPreThink =
 	CheckRules ();
 
 	if (self.bleed == TRUE)
+	{
         bleeding(self);
+	}
 
 	WaterMove ();
 
@@ -1158,7 +1160,7 @@ void() PlayerPostThink =
 			sound (self, CHAN_BODY, "player/h2ojump.wav", 1, ATTN_NORM);
 		else if (self.jump_flag < -650)
 		{
-			T_Damage (self, world, world, 5); 
+			T_Damage (self, world, world, 10); 
 			sound (self, CHAN_VOICE, "player/land2.wav", 1, ATTN_NORM);
 			self.deathtype = "falling";
 		}
@@ -1419,6 +1421,12 @@ void(entity targ, entity attacker) ClientObituary =
 			if (attacker.solid == SOLID_BSP && attacker != world)
 			{	
 				bprint (" was squished\n");
+				return;
+			}
+			if (targ.deathtype == "bleed")
+			{
+				targ.deathtype = "";
+				bprint (" forget to get health\n");
 				return;
 			}
 			if (targ.deathtype == "falling")

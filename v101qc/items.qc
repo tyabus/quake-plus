@@ -254,18 +254,27 @@ void() armor_touch =
 	if (self.classname == "item_armor1")
 	{
 		type = 0.3;
+		if (skill == 3)
+			value = 50;
+		
 		value = 100;
 		bit = IT_ARMOR1;
 	}
 	if (self.classname == "item_armor2")
 	{
 		type = 0.6;
+		if (skill == 3)
+			value = 100;
+		
 		value = 150;
 		bit = IT_ARMOR2;
 	}
 	if (self.classname == "item_armorInv")
 	{
 		type = 0.8;
+		if (skill == 3)
+			value = 100;
+		
 		value = 200;
 		bit = IT_ARMOR3;
 	}

@@ -303,5 +303,5 @@ void(entity org) bleeding =
 	if (time < org.bleed_delay)
 		return;
 	SpawnBlood (org.origin, '0 0 0', 73);
-	org.bleed_delay = org.bleed_delay + 4.0;
+	org.bleed_delay = org.bleed_delay + 6.0;
 };

@@ -135,9 +135,8 @@ SpawnBlood
 */
 void(vector org, vector vel, float damage) SpawnBlood =
 {
-	particle (org, vel*0.15, 73, damage*2);
-	particle (org, vel*0.2, 73, damage*3);
 	particle (org, vel*0.3, 73, damage*2);
+	particle (org, vel*0.2, 73, damage*3);
 };
 
 /*
