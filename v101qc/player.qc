@@ -115,6 +115,26 @@ void()	player_stand1 =[	$axstnd1,	player_stand1	]
 
 void()	player_run =[	$rockrun1,	player_run	]
 {
+       if (self.walkframe == 1 || self.walkframe == 4 )
+        {
+                if (checkbottom(self) == TRUE)
+                {
+                        if (self.waterlevel == 0)
+				{
+					local float rand;
+					rand = rint(random() * 3);
+					if (rand == 1)
+				         sound (self, CHAN_VOICE, "player/step1.wav", 0.5, ATTN_NORM);
+					else if (rand == 2)
+				         sound (self, CHAN_VOICE, "player/step2.wav", 0.5, ATTN_NORM);
+					else if (rand == 0)
+				         sound (self, CHAN_VOICE, "player/step3.wav", 0.5, ATTN_NORM);
+					else if (rand == 3)
+					 sound (self, CHAN_VOICE, "player/step4.wav", 0.5, ATTN_NORM);
+				}
+		}
+	}
+
 	self.weaponframe=0;
 	if (!self.velocity_x && !self.velocity_y)
 	{

@@ -5,7 +5,7 @@ OLD ONE
 
 ==============================================================================
 */
-$cd /raid/quake/id1/models/old_one
+$cd id1/models/old_one
 $origin 0 0 24
 $base base
 $skin skin
@@ -110,6 +110,9 @@ void() finale_1 =
 {
 	local entity	pos, pl;
 	local entity	timer;
+	
+	killed_monsters = killed_monsters + 1;
+	WriteByte (MSG_ALL, SVC_KILLEDMONSTER);	// FIXME: reliable broadcast
 
 	intermission_exittime = time + 10000000;	// never allow exit
 	intermission_running = 1;
@@ -239,6 +242,13 @@ void() finale_4 =
 
 //============================================================================
 
+void () nopain =
+{
+	self.health = 40000;
+};
+
+//============================================================================
+
 
 /*QUAKED monster_oldone (1 0 0) (-16 -16 -24) (16 16 32)
 */
@@ -267,6 +277,7 @@ void() monster_oldone =
 	self.think = old_idle1;
 	self.nextthink = time + 0.1;	
 	self.takedamage = DAMAGE_YES;
+	self.th_pain = nopain;
 	self.th_die = finale_1;
 	shub = self;
 	

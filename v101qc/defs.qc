@@ -409,7 +409,6 @@ entity	damage_attacker;	// set by T_Damage
 float	framecount;
 
 float		skill;
-
 //================================================
 
 //

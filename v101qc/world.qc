@@ -249,10 +249,15 @@ void() worldspawn =
 	precache_sound ("misc/outwater.wav");		// leaving water sound
 
 	precache_sound ("player/lburn1.wav");		// lava burn
-	precache_sound ("player/lburn2.wav");		// lava burn
+	precache_sound ("player/lburn2.wav");
 
-	precache_sound ("misc/water1.wav");			// swimming
-	precache_sound ("misc/water2.wav");			// swimming
+	precache_sound ("misc/water1.wav");		// swimming
+	precache_sound ("misc/water2.wav");
+
+        precache_sound ("player/step1.wav");		// footsteps
+        precache_sound ("player/step2.wav");
+        precache_sound ("player/step3.wav");
+        precache_sound ("player/step4.wav");
 
 	precache_model ("progs/player.mdl");
 	precache_model ("progs/eyes.mdl");
@@ -337,7 +342,7 @@ void() worldspawn =
 
 void() StartFrame =
 {
-	teamplay = cvar("teamplay");
+	//teamplay = cvar("teamplay");
 	skill = cvar("skill");
 	framecount = framecount + 1;
 };
